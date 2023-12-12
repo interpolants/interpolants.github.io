@@ -33,7 +33,7 @@ In what follows, we detail a paradigm to that allows for defining a broad family
 
 When thinking about dynamical transport between $\rho_0$ and $\rho_1$, we can take two perspectives: the Eulerian viewpoint, in which we ask about the time dynamics of *intermediate density* $\rho(t,x)$, and the Lagrangian viewpoint, in which as about the transport of *individual samples* from an initial density (e.g. $\rho_0$). 
 
-Let's start with the former, the Eulerian perspective. Under what rule must $\rho(t,x)$ evolve so that at time $t=0$, our time-density is equal to our initial density $\big(\rho(t=0, x) = \rho_0 \big)$, differentiating between the two with an underscore) and at $t=1$, it arrives at our final density $\big(\rho(t=1,x) = \rho_1$)\big)? Because a probability density is a conserved quantity, we can describe its dyanmics via a *continuity equation* (also called a transport equation sometimes):
+Let's start with the former, the Eulerian perspective. Under what rule must $\rho(t,x)$ evolve so that at time $t=0$, our time-density is equal to our initial density $\big(\rho(t=0, x) = \rho_0 \big)$, differentiating between the two with an underscore) and at $t=1$, it arrives at our final density $\big(\rho(t=1,x) = \rho_1)\big$)? Because a probability density is a conserved quantity, we can describe its dyanmics via a *continuity equation* (also called a transport equation sometimes):
 
 $$
 \partial_t \rho(t) + \nabla \cdot \mathbf{j} = 0
@@ -49,7 +49,8 @@ When the current density $\mathbf j$ can be characterized by a velocity field $b
 - Introduce interpolants, general and with examples
 - show that it allows us to sample $\rho(t,x)$ everywhere (e.g. with example you had above)
 - Through which we can learn $b$.
-- 
+- Interpolant notation $x(t) = I(t,x_0, x_1)$. A sample $x(t) \sim \rho(t,x)$ is a sample of the interpolant.
+- A sample $x_0 \sim \rho_0$ is a sample from the base. $x_1 \sim \rho_1$ is a sample from the target.
 
 A relevant extension of this 
 

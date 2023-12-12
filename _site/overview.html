@@ -88,7 +88,7 @@ What is a suitable way to map samples from one density to samples from another?
 
 <p>When thinking about dynamical transport between $\rho_0$ and $\rho_1$, we can take two perspectives: the Eulerian viewpoint, in which we ask about the time dynamics of <em>intermediate density</em> $\rho(t,x)$, and the Lagrangian viewpoint, in which as about the transport of <em>individual samples</em> from an initial density (e.g. $\rho_0$).</p>
 
-<p>Let’s start with the former, the Eulerian perspective. Under what rule must $\rho(t,x)$ evolve so that at time $t=0$, our time-density is equal to our initial density $\big(\rho(t=0, x) = \rho_0 \big)$, differentiating between the two with an underscore) and at $t=1$, it arrives at our final density $\big(\rho(t=1,x) = \rho_1$)\big)? Because a probability density is a conserved quantity, we can describe its dyanmics via a <em>continuity equation</em> (also called a transport equation sometimes):</p>
+<p>Let’s start with the former, the Eulerian perspective. Under what rule must $\rho(t,x)$ evolve so that at time $t=0$, our time-density is equal to our initial density $\big(\rho(t=0, x) = \rho_0 \big)$, differentiating between the two with an underscore) and at $t=1$, it arrives at our final density $\big(\rho(t=1,x) = \rho_1)\big$)? Because a probability density is a conserved quantity, we can describe its dyanmics via a <em>continuity equation</em> (also called a transport equation sometimes):</p>
 
 \[\partial_t \rho(t) + \nabla \cdot \mathbf{j} = 0\]
 
@@ -103,7 +103,8 @@ What is a suitable way to map samples from one density to samples from another?
   <li>Introduce interpolants, general and with examples</li>
   <li>show that it allows us to sample $\rho(t,x)$ everywhere (e.g. with example you had above)</li>
   <li>Through which we can learn $b$.</li>
-  <li></li>
+  <li>Interpolant notation $x(t) = I(t,x_0, x_1)$. A sample $x(t) \sim \rho(t,x)$ is a sample of the interpolant.</li>
+  <li>A sample $x_0 \sim \rho_0$ is a sample from the base. $x_1 \sim \rho_1$ is a sample from the target.</li>
 </ul>
 
 <p>A relevant extension of this</p>
