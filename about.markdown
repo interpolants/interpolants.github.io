@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Overview
-permalink: /overview
+permalink: overview
 ---
 
 Let's lay out the groundwork for building generative models out of dynamical transport. From there we can see what interpolants facilitate. 
