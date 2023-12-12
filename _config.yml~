@@ -19,11 +19,11 @@
 # in the templates via {{ site.myvariable }}.
 
 title: All things Stochastic Interpolants
-author: Interpolators
+author: Michael S Albergo
 email: michaelsalbergo@gmail.com
 description:  A resource for dynamical transport of measure.
-baseurl: "/index" # the subpath of your site, e.g. /blog
-url: "http://interpolants.github.io" # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: "/interpolants" # the subpath of your site, e.g. /blog
+url: "http://malbergo.me" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: msalbergo 
 github_username:  interpolants
 
