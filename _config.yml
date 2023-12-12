@@ -22,7 +22,7 @@ title: All things Stochastic Interpolants
 author: Interpolators
 email: michaelsalbergo@gmail.com
 description:  A resource for dynamical transport of measure.
-baseurl: "/index" # the subpath of your site, e.g. /blog
+baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://interpolants.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: msalbergo 
 github_username:  interpolants
