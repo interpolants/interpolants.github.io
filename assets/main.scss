@@ -1,0 +1,122 @@
+---
+---
+
+@import "minima";
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+
+/* Style the dropdown button (the element you hover over to show the dropdown content) */
+.dropdown button {
+  background-color: #6d5b82; /* Green background */
+  color: white; /* White text */
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+/* Button hover state */
+.dropdown:hover .dropbtn {
+  background-color: #6d5b82;
+}
+
+
+// homepage css stuff
+#page-links {
+  display: flex;
+  justify-content: center; /* Center links horizontally */
+  flex-wrap: wrap; /* Allow wrapping onto the next line */
+  gap: 10px; /* Add some space between the links */
+  margin-top: 20px; /* Add space between the video and the link row */
+}
+
+#page-links a {
+  background: #988cb2c0; /* A light grey background */
+  padding: 10px 15px; /* Some padding around the link text */
+  border-radius: 5px; /* Rounded corners for aesthetics */
+  text-decoration: none; /* Remove the underline from links */
+  color: #333; /* Dark text color for contrast */
+  transition: background-color 0.3s; /* Smooth background color change on hover */
+
+  &:hover {
+    background: #eaeaea; /* Change background on hover */
+  }
+}
+
+
+.colorful-frame {
+  display: inline-block;
+  border: 2px solid #988cb2c0; /* Replace with the color you want */
+  padding: 5px 10px; /* Adjust the space between the text and the frame */
+  margin: 5px 10px; /* Adjust spacing around the frame if needed */
+  font-weight: bold;
+  font-style: italic;
+  text-align: center;
+  border-radius: 2px; /* Optional: if you want rounded corners */
+}
+
+.centered-text-box {
+  text-align: center; /* This will center the inline-block child */
+  margin-top: 10px; /* Adjust to the space you want above the text box */
+  margin-bottom: 10px; /* Adjust to the space you want below the text box */
+}
+
+p {
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+
+
+
+// author css stuff for homepage
+
+.author-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px; /* Adjust the gap between items */
+}
+
+.author-link {
+  background-color: #f2f2f2; /* Background color for each author link */
+  padding: 10px;
+  border-radius: 5px; /* Rounded corners */
+  text-decoration: none; /* Removes the underline from links */
+  color: black; /* Text color */
+  font-weight: bold; /* Bold text */
+}
+
+.author-link:hover {
+  background-color: #e6e6e6; /* Change background on hover */
+  text-decoration: underline; /* Underline on hover (optional) */
+}

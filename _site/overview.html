@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Overview | All things Stochastic Interpolants</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="Overview" />
+<meta name="author" content="Michael S Albergo" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A resource for dynamical transport of measure." />
+<meta property="og:description" content="A resource for dynamical transport of measure." />
+<link rel="canonical" href="http://localhost:4000/interpolants/overview" />
+<meta property="og:url" content="http://localhost:4000/interpolants/overview" />
+<meta property="og:site_name" content="All things Stochastic Interpolants" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Overview" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Michael S Albergo"},"description":"A resource for dynamical transport of measure.","headline":"Overview","url":"http://localhost:4000/interpolants/overview"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/interpolants/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/interpolants/feed.xml" title="All things Stochastic Interpolants" /></head>
+<body><header class="site-header">
+
+
+    <div class="wrapper"><a class="site-title" rel="author" href="/interpolants/">All things Stochastic Interpolants</a><nav class="site-nav">
+          <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+          <label for="nav-trigger">
+            <span class="menu-icon">
+              <svg viewBox="0 0 18 15" width="18px" height="15px">
+                <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+              </svg>
+            </span>
+          </label>
+  
+          <div class="trigger">
+            <!--<a class="page-link" href="/interpolants/overview">Overview</a><a class="page-link" href="/interpolants/couplings">Couplings</a><a class="page-link" href="/interpolants/multimarginal">Multimarginal</a><a class="page-link" href="/interpolants/ot">Optimal Transport</a>-->
+
+            <!--New bit of text from Michael!!-->
+            <div class="dropdown">
+                <button class="dropbtn">Topics</button>
+                <div class="dropdown-content">
+                  <!-- <a href="/concept1">Concept 1</a> -->
+                  <!-- <a href="/concept2">Concept 2</a> --><a class="page-link" href="/interpolants/overview">Overview</a><a class="page-link" href="/interpolants/couplings">Couplings</a><a class="page-link" href="/interpolants/multimarginal">Multimarginal</a><a class="page-link" href="/interpolants/ot">Optimal Transport</a><!-- Add more links for additional concepts here -->
+                </div>
+              </div>
+            <!--End of new bit of text from Michael!!-->
+          </div>
+        </nav></div>
+
+
+    <!-- for twitter icons -->
+    <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"> -->
+  </header><main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Overview</h1>
+  </header>
+
+  <div class="post-content">
+    <p>Let’s lay out the groundwork for building generative models out of dynamical transport. From there we can see what interpolants facilitate.</p>
+
+<p>We start with the following setting. Suppose you have samples taken from two distributions with density \(\rho_0(x_0)\) and $\rho_1(x_1)$. Let’s choose simple examples for what these densities could be, though in general we stress that they could be arbitrary. For now we’ll say that any $x$ exists in $\mathbb R^{d=2}$, that $\rho_0$ is an N$(0,1_{d=2})$, and that $\rho_1$ is some complicated $2$-d density like the checkerboard one presented here.</p>
+
+<div style="text-align: center;">
+<img src="assets/figs/rho0.svg" alt="Alt text for the image" width="300" />
+<img src="assets/figs/rho1.svg" alt="Alt text for the image" width="300" />
+</div>
+
+<p>With these two densities in hand, we will be motivated by the following question:</p>
+<div class="centered-text-box">
+<span class="colorful-frame">
+What is a suitable way to map samples from one density to samples from another?
+</span>
+</div>
+
+<p>We will consider this parametrically – can I learn this map? There are some key features that we are certain to want in this parametric setting:</p>
+<ul>
+  <li>We can efficiently <em>learn</em> the parametric realization of the map.</li>
+  <li>Our parametric class is expressive enough for the true map to be captured by it.</li>
+</ul>
+
+<p>In what follows, we detail a paradigm to that allows for defining a broad family of such maps through the use of what we call a <em>stochastic interpolant</em>. From there we’ll see what type of learning problem we can set up to facilitate this with neural networks. Along the way, we’ll draw connection to score-based diffusion <a href="#song-2021">(Song et al. 2021)</a> as well as denoising methods <a href="#ho-2020">(Ho et al 2020)</a>.</p>
+
+<h3 id="connecting-rho_0-to-rho_1">Connecting $\rho_0$ to $\rho_1$</h3>
+
+<p>When thinking about dynamical transport between $\rho_0$ and $\rho_1$, we can take two perspectives: the Eulerian viewpoint, in which we ask about the time dynamics of <em>intermediate density</em> $\rho(t,x)$, and the Lagrangian viewpoint, in which as about the transport of <em>individual samples</em> from an initial density (e.g. $\rho_0$).</p>
+
+<p>Let’s start with the former, the Eulerian perspective. Under what rule must $\rho(t,x)$ evolve so that at time $t=0$, our time-density is equal to our initial density $\big(\rho(t=0, x) = \rho_0 \big)$, differentiating between the two with an underscore) and at $t=1$, it arrives at our final density $\big(\rho(t=1,x) = \rho_1$)\big)? Because a probability density is a conserved quantity, we can describe its dyanmics via a <em>continuity equation</em> (also called a transport equation sometimes):</p>
+
+\[\partial_t \rho(t) + \nabla \cdot \mathbf{j} = 0\]
+
+<p>where $\nabla$ is the divergence operator and $\mathbf j$ is a <em>current density</em> (also called a flux density) describing how the probability mass is moving through a unit area, the divergence of which characterizes the dynamics of the change in measure. I have dropped the $x$ from $\rho(t,x)$ to shorten the notation. Because $\rho(t)$ is a conserved quantity, the divergence of the current density and the time dyanmics of $\rho(t)$ must counter balance each other.</p>
+
+<p>When the current density $\mathbf j$ can be characterized by a velocity field $b(t,x)$ and</p>
+
+<h5 id="below">Below</h5>
+<ul>
+  <li>animation of eulerian vs lagrangian (density change versus prob flow lines) for simple 1D system</li>
+  <li>Ask how do we learn $b$?</li>
+  <li>Introduce interpolants, general and with examples</li>
+  <li>show that it allows us to sample $\rho(t,x)$ everywhere (e.g. with example you had above)</li>
+  <li>Through which we can learn $b$.</li>
+  <li></li>
+</ul>
+
+<p>A relevant extension of this</p>
+
+<p>here is my test for a codeblock:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">hello_world</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">'Hello, world!'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h4 id="references">References</h4>
+<ol>
+  <li>
+    <p><a id="song-2021"></a>Yang Song, Jascha Sohl-Dickstein, Diederik P. Kingma, Abhishek Kumar, Stefano Ermon, Ben Poole. Score-Based Generative Modeling through Stochastic Differential Equations. <em>ICLR 2021</em></p>
+  </li>
+  <li>
+    <p><a id="ho-2020"></a>Jonathan Ho, Ajay Jain, Pieter Abbeel. Denoising Diffusion Probabilistic Models. <em>ICLR 2021</em></p>
+  </li>
+</ol>
+
+<!-- This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](https://jekyllrb.com/) -->
+
+<!-- You can find the source code for Minima at GitHub:
+[jekyll][jekyll-organization] /
+[minima](https://github.com/jekyll/minima) -->
+
+<!-- You can find the source code for Jekyll at GitHub:
+[jekyll][jekyll-organization] /
+[jekyll](https://github.com/jekyll/jekyll) -->
+
+<!-- [jekyll-organization]: https://github.com/jekyll -->
+
+  </div>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true
+      },
+      "HTML-CSS": {
+        preferredFont: "TeX",
+        availableFonts: ["TeX"],
+        webFont: "TeX"
+      }
+    });
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+</article>
+      </div>
+    </main><footer class="site-footer h-card">
+    <data class="u-url" href="/interpolants/"></data>
+  
+    <div class="wrapper">
+  
+      <div class="footer-col-wrapper">
+        <div class="footer-col">
+          <p class="feed-subscribe">
+            <a href="http://localhost:4000/interpolants/feed.xml">
+              <svg class="svg-icon orange">
+                <use xlink:href="/interpolants/assets/minima-social-icons.svg#rss"></use>
+              </svg><span>Subscribe</span>
+            </a>
+          </p>
+          <ul class="contact-list">
+            
+          </ul>
+        </div>
+        <div class="footer-col">
+          <p>A resource for dynamical transport of measure.</p>
+        </div>
+      </div>
+  
+      <div class="social-links"><ul class="social-media-list"><li><a href="https://github.com/interpolants"><svg class="svg-icon"><use xlink:href="/interpolants/assets/minima-social-icons.svg#github"></use></svg> <span class="username">interpolants</span></a></li><li><a href="https://www.twitter.com/msalbergo"><svg class="svg-icon"><use xlink:href="/interpolants/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">msalbergo</span></a></li></ul>
+</div>
+  
+    </div>
+  
+  </footer></body>
+
+</html>
